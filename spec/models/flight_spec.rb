@@ -39,5 +39,9 @@ RSpec.describe Flight, type: :model do
     it 'count_of_adults' do
       expect(@flight.count_of_adults).to eq 4
     end
+
+    it 'count_of_minors' do
+      expect(@flight.count_of_minors).to eq 2
+    end
   end
 end
