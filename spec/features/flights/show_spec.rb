@@ -16,6 +16,7 @@ RSpec.describe "Flight show page" do
 
     expect(page).to have_content @flight.number
     expect(page).to have_content @flight.date
+    expect(page).to have_content @flight.time
     expect(page).to have_content @flight.departure_city
     expect(page).to have_content @flight.arrival_city
 
