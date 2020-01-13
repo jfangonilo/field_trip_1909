@@ -2,3 +2,10 @@
 <% @passenger.flight_passengers.each do |flight_passenger| %>
   <%= link_to flight_passenger.flight.number, flight_path(flight_passenger.flight) %>
 <% end %>
+
+<%= form_tag "/passengers/#{@passenger.id}/flight_passengers" do %>
+  <%= label_tag :flight_number %>
+  <%= text_field_tag :flight_number %>
+
+  <%= submit_tag "Add Flight" %>
+<% end %>
