@@ -9,6 +9,14 @@ RSpec.describe "Flight show page" do
     FlightPassenger.create!(passenger: @passenger_1, flight: @flight)
     @passenger_2 = Passenger.create!(name: "Madelyn", age: 28)
     FlightPassenger.create!(passenger: @passenger_2, flight: @flight)
+    @passenger_3 = Passenger.create!(name: "Wren", age: 33)
+    FlightPassenger.create!(passenger: @passenger_3, flight: @flight)
+    @passenger_4 = Passenger.create!(name: "Youngling 1", age: 13)
+    FlightPassenger.create!(passenger: @passenger_4, flight: @flight)
+    @passenger_5 = Passenger.create!(name: "Youngling 2", age: 8)
+    FlightPassenger.create!(passenger: @passenger_5, flight: @flight)
+    @passenger_6 = Passenger.create!(name: "Eighteen y/o", age: 18)
+    FlightPassenger.create!(passenger: @passenger_6, flight: @flight)
   end
 
   it "shows the flight information" do
@@ -24,5 +32,12 @@ RSpec.describe "Flight show page" do
 
     expect(page).to have_content @passenger_1.name
     expect(page).to have_content @passenger_2.name
+  end
+
+  it "shows count of adults and minors" do
+    visit "/flights/#{@flight.id}"
+
+    expect(page).to have_content "Adults: 3"
+    expect(page).to have_content "Minors: 2"
   end
 end
