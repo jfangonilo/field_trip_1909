@@ -21,4 +21,15 @@ RSpec.describe "Passenger show page" do
     click_link @flight_1.number
     expect(current_path).to eq("/flights/#{@flight_1.id}")
   end
+
+  it "has a form to add a flight" do
+    new_flight = Flight.create!(number: "AS-19041", date: Date.new, time: Time.now, departure_city: "Gunnison", arrival_city: "Florida", airline: @airline)
+
+    visit "/passengers/#{@passenger.id}"
+    fill_in "Flight number", with: new_flight.number
+    click_button "Add Flight"
+
+    expect(current_path).to eq "/passengers/#{@passenger.id}"
+    expect(page).to have_link new_flight.number
+  end
 end
