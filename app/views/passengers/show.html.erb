@@ -1,0 +1,4 @@
+<%= @passenger.name %>
+<% @passenger.flight_passengers.each do |flight_passenger| %>
+  <%= link_to flight_passenger.flight.number, flight_path(flight_passenger.flight) %>
+<% end %>
