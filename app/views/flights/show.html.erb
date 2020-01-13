@@ -5,6 +5,9 @@
 <%= @flight.arrival_city %>
 <%= @flight.airline.name %>
 
-<% @flight.flight_passengers.each do |flight_passenger| %>
-  <%= flight_passenger.passenger.name %>
+<% @flight.passengers.each do |passenger| %>
+  <%= passenger.name %>
 <% end %>
+
+Adults: <%= @flight.count_of_adults %>
+Minors: <%= @flight.count_of_minors %>
